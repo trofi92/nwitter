@@ -1,21 +1,29 @@
 import React from "react";
-import { Routes, HashRouter as Router, Route } from "react-router-dom";
+import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import Auth from "../routes/Auth";
 import Home from "../routes/Home";
+import Navigation from "./Navigation";
+import Profile from "../routes/Profile";
 
 const AppRouter = ({ isLoggedIn }) => {
-    return (
+  return (
     <Router>
+        {isLoggedIn && <Navigation />}
       <Routes>
         {isLoggedIn ? (
           <>
-            <Route path="/" element={<Home/>}/>
+            <Route path="/" element={<Home />} />
           </>
+              // &&
+          // <>
+          //   <Route path="/" element={<Profile/>}/>  
+          // </>           에라이 썩을 #3.1
                 ) : (
             <>
           <Route path="/" element={<Auth/>}/>
-          </>
-        )}
+            </>
+          )
+          }   
       </Routes>
     </Router>
   );
